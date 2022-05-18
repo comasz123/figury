@@ -1,4 +1,8 @@
 import figures.Figure;
+import figures.quadrants.NormalQuadrant;
+import figures.quadrants.Quadrant;
+import figures.quadrants.Rectangle;
+import figures.quadrants.Square;
 import figures.triangles.AllSidesEqualTriangle;
 import figures.triangles.DifferentSidesTriangle;
 import figures.triangles.Triangle;
@@ -12,51 +16,60 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        int numberOfInputs = 1;
+        int numberOfInputs = 2;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Figure figure = new Figure();
         boolean checkInput = true;
 
-        while (checkInput) {
-            checkInput = false;
+        for (int inputs = 0; inputs < numberOfInputs; inputs++) {
 
-            System.out.println("podaj dane wejściowe");
+            while (checkInput) {
+                checkInput = false;
 
-            for (int i = 0; i < numberOfInputs; i++) {
-                String input = br.readLine();
-                String[] inputArray = input.split(" ");
-                int[] sides = new int[3];
-                for (int j = 0; j < 3; j++) {
-                    sides[j] = Integer.parseInt(inputArray[j]);
-                    System.out.println(sides[j]);
-                }
-                if (!figure.checkIfPossible(sides)) {
-                    System.out.println("nie da się z tego zrobić figury");
-                    checkInput = true;
-                } else {
-                    if (inputArray.length == 3) {
+                System.out.println("podaj dane wejściowe");
 
-                        Triangle triangle = new Triangle(sides);
-                        if (triangle.determineType() == 0) {
-                            figure = new DifferentSidesTriangle(sides);
-                        }
-                        if (triangle.determineType() == 1) {
-                            figure = new AllSidesEqualTriangle(sides);
-                        }
-                        if (triangle.determineType() == 2) {
-                            figure = new TwoSidesEqualTriangle(sides);
+                for (int i = 0; i < numberOfInputs; i++) {
+                    String input = br.readLine();
+                    String[] inputArray = input.split(" ");
+                    int[] sides = new int[inputArray.length];
+                    for (int j = 0; j < inputArray.length; j++) {
+                        sides[j] = Integer.parseInt(inputArray[j]);
+                    }
+                    Figure figure = new Figure(sides);
+                    if (!figure.checkIfPossible()) {
+                        System.out.println("nie da się z tego zrobić figury");
+                        checkInput = true;
+                    } else {
+                        if (inputArray.length == 3) {
+                            Triangle triangle = new Triangle(sides);
+                            if (triangle.determineType() == 0) {
+                                figure = new DifferentSidesTriangle(sides);
+                            }
+                            if (triangle.determineType() == 1) {
+                                figure = new AllSidesEqualTriangle(sides);
+                            }
+                            if (triangle.determineType() == 2) {
+                                figure = new TwoSidesEqualTriangle(sides);
+                            }
+
+                        } else if (inputArray.length == 4) {
+                            Quadrant quadrant = new Quadrant(sides);
+                            if (quadrant.determineType()==0){
+                                figure = new NormalQuadrant(sides);
+                            } else if (quadrant.determineType()==1){
+                                figure = new Square(sides);
+                            } else if (quadrant.determineType()==2){
+                                figure = new Rectangle(sides);
+                            }
+
+                        } else if (inputArray.length == 5) {
+
+                        } else if (inputArray.length == 6) {
+
                         }
                         System.out.println(figure);
-                    } else if (inputArray.length == 4) {
-
-                    } else if (inputArray.length == 5) {
-
-                    } else if (inputArray.length == 6) {
-
                     }
                 }
             }
-
 
         }
 

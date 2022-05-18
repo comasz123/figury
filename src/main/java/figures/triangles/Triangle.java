@@ -1,13 +1,11 @@
 package figures.triangles;
-
 import figures.Figure;
-
-import java.util.Arrays;
 
 public class Triangle extends Figure {
     private double area;
 
-    public Triangle(){}
+    public Triangle(){
+    }
 
     public Triangle(int[] sides) {
         super(sides);
@@ -38,8 +36,7 @@ public class Triangle extends Figure {
 //        return 0;
 //    }
     public int determineType(){
-        if(super.getSides()[0]==super.getSides()[1]&&super.getSides()[0]==super.getSides()[2]
-                &&super.getSides()[1]==super.getSides()[2]){
+        if(super.getSides()[0]==super.getSides()[1]&&super.getSides()[1]==super.getSides()[2]){
             return 1;
         }
         if((super.getSides()[0]==super.getSides()[1]&&!(super.getSides()[0]==super.getSides()[2]))

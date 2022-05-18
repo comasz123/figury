@@ -25,7 +25,6 @@ public class Figure {
         return sides;
     }
 
-
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
@@ -36,11 +35,16 @@ public class Figure {
         sb.append(this.perimiter);
         return sb.toString();
     }
-    public boolean checkIfPossible(int[] sides){
-        int[] sortedSides = sides;
+    public boolean checkIfPossible(){
+        int[] sortedSides = this.sides;
         Arrays.sort(sortedSides);
         if(sortedSides.length==3){
             if ((sortedSides[sortedSides.length - 1] < (sortedSides[0] + sortedSides[1]))) {
+                return true;
+            }
+        }
+        if(sortedSides.length==4){
+            if ((sortedSides[sortedSides.length - 1] < (sortedSides[0] + sortedSides[1]+sortedSides[2]))) {
                 return true;
             }
         }
