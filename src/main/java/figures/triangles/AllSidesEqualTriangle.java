@@ -8,7 +8,7 @@ public class AllSidesEqualTriangle extends Triangle{
 
     public AllSidesEqualTriangle(int[] sides) {
         super(sides);
-        this.name = "Trojkąt Równoboczny";
+        this.name = super.getName() + " Równoboczny";
     }
     @Override
     public String toString () {

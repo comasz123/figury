@@ -2,6 +2,7 @@ package figures.triangles;
 import figures.Figure;
 
 public class Triangle extends Figure {
+    private String name;
     private double area;
 
     public Triangle(){
@@ -9,8 +10,13 @@ public class Triangle extends Figure {
 
     public Triangle(int[] sides) {
         super(sides);
+        this.name = "Trójkąt";
         double p = super.getPerimiter();
         this.area = Math.sqrt(p*(p-sides[0])*(p-sides[1])*(p-sides[2]));
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -23,18 +29,7 @@ public class Triangle extends Figure {
 
         return sb.toString();
     }
-//    public int determineType(int[] sides){
-//        if(sides[0]==sides[1]&&sides[0]==sides[2]
-//                &&sides[1]==sides[2]){
-//            return 1;
-//        }
-//        if((sides[0]==sides[1]&&!(sides[0]==sides[2]))
-//                ||(sides[0]==sides[2]&&!(sides[0]==sides[1]))
-//                ||(sides[1]==sides[2]&&!(sides[1]==sides[0]))) {
-//            return 2;
-//        }
-//        return 0;
-//    }
+
     public int determineType(){
         if(super.getSides()[0]==super.getSides()[1]&&super.getSides()[1]==super.getSides()[2]){
             return 1;

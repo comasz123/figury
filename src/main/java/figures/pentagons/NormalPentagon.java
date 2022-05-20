@@ -1,18 +1,16 @@
-package figures.quadrants;
+package figures.pentagons;
 
-public class NormalQuadrant extends Quadrant {
+public class NormalPentagon extends Pentagon {
     private String name;
     private String area;
 
-    public NormalQuadrant() {
+    public NormalPentagon() {
     }
-
-    public NormalQuadrant(int[] sides) {
+    public NormalPentagon(int[] sides){
         super(sides);
-        this.name = super.getName();
-        this.area = "brak";
-    }
+        this.name = "Pięciokąt";
 
+    }
     @Override
     public String toString () {
         StringBuilder sb = new StringBuilder();
@@ -23,5 +21,5 @@ public class NormalQuadrant extends Quadrant {
 
         return sb.toString();
     }
-}
 
+}

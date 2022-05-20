@@ -1,4 +1,7 @@
 import figures.Figure;
+import figures.pentagons.NormalPentagon;
+import figures.pentagons.Pentagon;
+import figures.pentagons.RegularPentagon;
 import figures.quadrants.NormalQuadrant;
 import figures.quadrants.Quadrant;
 import figures.quadrants.Rectangle;
@@ -62,6 +65,12 @@ public class Main {
                             }
 
                         } else if (inputArray.length == 5) {
+                            Pentagon pentagon = new Pentagon(sides);
+                            if (pentagon.determineType()==0){
+                                figure = new NormalPentagon(sides);
+                            } else if (pentagon.determineType()==1){
+                                figure = new RegularPentagon(sides);
+                            }
 
                         } else if (inputArray.length == 6) {
 
@@ -72,6 +81,5 @@ public class Main {
             }
 
         }
-
     }
 }

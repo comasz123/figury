@@ -8,7 +8,7 @@ public class DifferentSidesTriangle extends Triangle{
 
     public DifferentSidesTriangle(int[] sides) {
         super(sides);
-        this.name = "Trójkąt różnoboczny";
+        this.name = super.getName() + " różnoboczny";
     }
     @Override
     public String toString () {
