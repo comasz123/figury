@@ -45,11 +45,9 @@ public class Figure {
         for (int i = 0; i < sortedSides.length - 1; i++) {
             sumOfRemainingSides = sumOfRemainingSides + sides[i];
         }
-
         if ((sortedSides[sortedSides.length - 1] < sumOfRemainingSides)) {
             return true;
         }
-
         return false;
     }
 }

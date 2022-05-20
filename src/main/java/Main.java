@@ -14,17 +14,22 @@ import figures.triangles.TwoSidesEqualTriangle;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.Inet4Address;
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        int numberOfInputs = 2;
+        int numberOfInputs = 0;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         boolean checkInput = true;
+        System.out.println("Podaj ile figur tworzysz");
+        numberOfInputs = Integer.parseInt(br.readLine());
 
+        GUI gui = new GUI();
+
+        DataBase db = new DataBase(numberOfInputs);
         for (int inputs = 0; inputs < numberOfInputs; inputs++) {
-
             while (checkInput) {
                 checkInput = false;
 
@@ -75,11 +80,13 @@ public class Main {
                         } else if (inputArray.length == 6) {
 
                         }
-                        System.out.println(figure);
+                        db.addFigure(figure, i);
                     }
                 }
             }
 
         }
+        gui.printDatabase(db.getFigures());
+
     }
 }
