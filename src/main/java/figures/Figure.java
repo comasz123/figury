@@ -4,21 +4,25 @@ import java.util.Arrays;
 
 public class Figure {
     private int[] sides;
-    private int perimiter;
+    private double perimiter;
 
     public Figure() {
     }
 
     public Figure(int[] sides) {
         this.sides = sides;
-        int perimiterCalc = 0;
-        for (int i = 0; i < sides.length; i++) {
-            perimiterCalc = perimiterCalc + sides[i];
+        double perimiterCalc = 0;
+        if (sides.length > 2) {
+            for (int i = 0; i < sides.length; i++) {
+                perimiterCalc = perimiterCalc + sides[i];
+            }
+        } else if (sides.length == 1) {
+            perimiterCalc = 2 * Math.PI * sides[0];
         }
         this.perimiter = perimiterCalc;
     }
 
-    public int getPerimiter() {
+    public double getPerimiter() {
         return perimiter;
     }
 
@@ -42,11 +46,18 @@ public class Figure {
         int sumOfRemainingSides = 0;
         Arrays.sort(sortedSides);
 
-        for (int i = 0; i < sortedSides.length - 1; i++) {
-            sumOfRemainingSides = sumOfRemainingSides + sides[i];
-        }
-        if ((sortedSides[sortedSides.length - 1] < sumOfRemainingSides)) {
+        if (sortedSides.length == 1) {
             return true;
+        } else if (sortedSides.length == 2) {
+            return false;
+        } else if (sortedSides.length > 2) {
+            for (int i = 0; i < sortedSides.length - 1; i++) {
+                sumOfRemainingSides = sumOfRemainingSides + sides[i];
+            }
+            if ((sortedSides[sortedSides.length - 1] < sumOfRemainingSides)) {
+                return true;
+            }
+
         }
         return false;
     }

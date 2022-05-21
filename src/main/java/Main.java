@@ -1,3 +1,4 @@
+import figures.Circle;
 import figures.Figure;
 import figures.pentagons.NormalPentagon;
 import figures.pentagons.Pentagon;
@@ -27,8 +28,8 @@ public class Main {
         numberOfInputs = Integer.parseInt(br.readLine());
 
         GUI gui = new GUI();
-
         DataBase db = new DataBase(numberOfInputs);
+
         for (int inputs = 0; inputs < numberOfInputs; inputs++) {
             while (checkInput) {
                 checkInput = false;
@@ -47,6 +48,10 @@ public class Main {
                         System.out.println("nie da się z tego zrobić figury");
                         checkInput = true;
                     } else {
+                        if (inputArray.length == 1){
+                            Circle circle = new Circle(sides);
+                            figure = circle;
+                        }
                         if (inputArray.length == 3) {
                             Triangle triangle = new Triangle(sides);
                             if (triangle.determineType() == 0) {
